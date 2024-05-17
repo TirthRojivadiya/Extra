@@ -1,0 +1,36 @@
+body{
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.card{
+    background: #191c29;
+    width: 500px;
+    height: 700px;
+    padding: 3px;
+    padding-left: 30px;
+    margin-left: 500px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1px;
+    color: rgba(88, 199, 250, 0);
+    cursor: pointer;
+    font-family: cursive;
+    background-image: url("./WhatsApp\ Image\ 2024-02-05\ at\ 16.58.26_2aaffb00.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.4s;
+}
+
+.card:hover{
+    background-image: url("./WhatsApp\ Image\ 2024-02-05\ at\ 16.58.27_936925df.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(32, 115, 153);
+    transition: color 1s;
+    transition: 0.4s ease-in-out;
+}
