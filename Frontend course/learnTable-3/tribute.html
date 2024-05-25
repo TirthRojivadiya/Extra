@@ -4,20 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tribute Page to Linus Torvalds</title>
+    <!--adding a favicon-->
+    <link rel="icon" type="image/x-icon" href="download.png">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        aside{
+            float: right;
+            width: 50%;
+            background-color: aqua ;
+        }
+    </style>
 </head>
 <body>
-    <h1>Linus Torvalds</h1>
-    <p>The Creator of Linux</p>
+    <header>
+      <h1>Linus Torvalds</h1>
+      <p>The Creator of Linux</p>
+  </header>
+  <nav>
+    <a href="#resources">Go to resources</a>
+    <br>
+    <a href="#bio">Go to biography </a>
+    <br>
+    <a href="#ach">Go to achievements</a>
+    <br>
+</nav>
 
     <figure>
         <img src="images.jpeg">
         <figcaption>A photograph of Linus Torvalds</figcaption>
     </figure>
 
-    <h2>Biography</h2>
+  <section>
+    <h2 id="bio">Biography</h2>
     <p>Linus Torvalds is a Panish-American software engineer who is the creator and principal devloper of Linux kernal, which is the kernal for a number of operating systems. He also created the version control system Git. Torvalds was born on December 28, 1969 in Helsinki, Finland. He studies computer science at the University of Helsinki, and he devloped the Linux kernal as a student project in 1991. Since then, the Linux kernal has become one of the most widely used kernals in the world, powering everything from smartphones to supercomputers. </p>
+</section>
 
-    <h2>Achievements</h2>
+<aside>
+
+    <p>Linus Torvalds is a Panish-American software engineer who is the creator and principal devloper of Linux kernal,  </p>
+
+
+</aside>
+<section>
+    <h2 id="ach">Achievements</h2>
     <ul>
         <li><strong>1991</strong> - Created the Linux kernel and the version control system Git</li>
         <li><strong>2004</strong> - Named one of the "100 Most Influential People in the World" by Time magazine in 2004</li>
@@ -34,13 +65,20 @@
         <p>"One of the most influential people in the world."</p>
         <cite>-- Time Magazine <a href="https://www.codehelp.in">The Famous People</a></cite>
     </blockquote>
+</section>
 
-    <h2>Resources</h2>
+<section>
+
+    <h2 id="resources">Resources</h2>
     <p>Learn more about Linus Torvalds and his work:</p>
     <ul>
         <li><a href="https://www.codehelp.in">Wikipedia page on Linus Torvalds</a></li>
         <li><a href="https://www.codehelp.in">Linus Torvalds's personal website</a></li>
         <li><a href="https://www.codehelp.in">The Linux Kernel Archives</a></li>
     </ul>
+</section>
+<footer>
+    <p>this is footer</p>
+</footer>
 </body>
 </html>
