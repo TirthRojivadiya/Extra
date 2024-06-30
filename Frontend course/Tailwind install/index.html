@@ -39,7 +39,8 @@
          }
     </style>
   </head>
-  <body class="overflow-x-hidden">
+  <body>
+    <div class="overflow-x-hidden relative w-full">
     <nav class="bg-deepBlue">
       <div
         class="relative w-[1080px] mx-auto flex items-center justify-between"
@@ -55,7 +56,7 @@
 
         <ul class="flex gap-6">
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Payments</a>
             <div
@@ -63,7 +64,7 @@
             ></div>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Banking</a>
             <div
@@ -71,17 +72,17 @@
             ></div>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Corporate Cards</a>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Payroll</a>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Resources</a>
             <div
@@ -89,7 +90,7 @@
             ></div>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Support</a>
             <div
@@ -97,7 +98,7 @@
             ></div>
           </li>
           <li
-            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group"
+            class="text-white font-mullish py-7 hover:text-lightBlue cursor-pointer transition-all duration-200 relative group hidden lg:block"
           >
             <a href="#">Pricing</a>
             <div
@@ -112,6 +113,7 @@
             alt=""
             width="28px"
             height="20px"
+            class="hidden lg:block"
           />
           <button
             class="py-3 px-5 font-mullish text-white border-lightBlue border rounded-sm text-sm font-bold"
@@ -140,7 +142,7 @@
 
     <section class="relative bg-deepBlue">
       <div
-        class="w-10/12 max-w-[1080px] flex flex-row justify-between items-center mx-auto"
+        class="w-10/12 max-w-[1080px] flex flex-col lg:flex-row justify-between items-center mx-auto"
       >
         <!--left part-->
         <div class="space-y-8">
@@ -198,9 +200,14 @@
       <div class="relative w-11/12 max-w-[1080px] mx-auto pt-4">
         <!--heading-->
         <h2
-          class="font-mullish text-center text-2xl leading-[1.2] font-extrabold"
+          class="font-mullish text-center text-2xl leading-[1.2] font-extrabold hidden md:block"
         >
           Accept Payments with Razorpay Payment Suite
+        </h2>
+        <h2
+          class="font-mullish text-center text-5xl leading-[1.2] font-extrabold md:hidden"
+        >
+          Explore Razorpay Payment Suite
         </h2>
         <div class="w-6 h-1 bg-greenLight mx-auto mt-4 mb-6"></div>
         <!--content box-->
@@ -321,9 +328,9 @@
             </ul>
 
             <!--for button and hyperlink-->
-            <div class="flex flex-row items-center space-x-4">
+            <div class="flex flex-col-reverse  md:flex-row items-center space-x-4 ">
               <button
-                class="bg-lightBlue w-fit flex text-white py-[14px] px-[18px] rounded-md font-mullish font-bold hover:bg-lightBlue500 transition-all duration-200"
+                class="bg-lightBlue w-full md:w-fit flex text-white py-[14px] px-[18px] rounded-md font-mullish font-bold hover:bg-lightBlue500 transition-all duration-200 self-stretch"
               >
                 Sign Up Now
                 <svg
@@ -338,7 +345,7 @@
                 </svg>
               </button>
               <!--hyperlink-->
-              <div class="flex items-center cursor-pointer group">
+              <div class="flex self-start md:self-center cursor-pointer group">
                 <a
                   href="#"
                   class="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200"
@@ -365,7 +372,7 @@
           <img
             src="https://razor-pay-clone.vercel.app/assets/payment-suite-f883499d.png"
             alt=""
-            class="absolute max-w-[600px] right-0 bottom-0"
+            class="absolute max-w-[600px] right-0 bottom-0 hidden md:max-w-[400px] lg:max-w-[600px] md:block lg:block"
           />
         </div>
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
@@ -880,10 +887,10 @@
                   <span>View financial insights at a glance</span>
                 </li>
               </ul>
-              <div class="flex flex-row w-full items-center space-x-4 ">
+              <div class="flex flex-col-reverse md:flex-row w-full items-center space-x-4 ">
                 <button class="relative bg-lightBlue w-full md:w-fit flex items-center justify-center
                 md:justify-start text-white py-[14px] px-[18px] md:pr-[90px] rounded-md
-                font-mullish font-bold hover:bg-lightBlue500 transition-all duration-200">Sign Up
+                font-mullish font-bold hover:bg-lightBlue500 transition-all duration-200 self-stretch place-content-center">Sign Up
                   <div class="w-12 h-[60px] bg-greenLight absolute right-6 skew-x-[20deg] flex justify-center items-center">
                     <svg
                     viewBox="0 0 24 24"
@@ -898,7 +905,7 @@
                 </button>
 
                 <!--hyperlink-->
-                <div class="flex flex-row items-center cursor-pointer group">
+                <div class="flex flex-col-reverse self-start md:self-center md:flex-row items-center cursor-pointer group">
                   <a href="#"
                   class="font-mullish font-bold text-lightBlue500 group-hover:text-lightBlue transition-all duration-200">Know More
                   </a>
@@ -921,11 +928,11 @@
             </div>
             <!--background image for content box-->
               <img src="https://razor-pay-clone.vercel.app/assets/buisness-banking-f8dca509.png" alt=""
-              class="max-w-[600px] absolute right-0 bottom-0 z-4">
+              class="max-w-[600px] absolute right-0 bottom-0 z-4 hidden md:max-w-[400px] lg:max-w-[600px] md:block lg:block">
           </div>
 
           <!--card box-->
-          <div class="grid grid-cols-3 w-full gap-4 my-14">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 my-14">
             <!--box1-->
             <div class="w-full min-h-[15rem] relative cursor-pointer ">
               <img src="https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/current-icon.svg" alt=""
@@ -1126,7 +1133,7 @@
           </div>
           </div>
           <!--demo-box-->
-          <div class="flex flex-row w-full items-center justify-evenly border border-slate-700 mb-24 gap-y-6 py-10 p-8 relative rounded-md ">
+          <div class=" flex-row w-full items-center justify-evenly border border-slate-700 mb-24 gap-y-6 py-10 p-8 relative rounded-md hidden md:flex-col lg:flex-row md:block lg:flex">
             <p class="font-mullish text-white text-xl ">Check out the live demo to learn how RazorpayX works.
               <span class="font-bold">No sign-up required!
               </span>
@@ -1161,7 +1168,7 @@
         <img src="https://github.com/Indra-S/Razorpay-Clone/blob/master/images/feature-section1-dottedrows.png?raw=true" alt=""
         class=" absolute w-[233px] -right-[3.5rem] -top-[6rem] z-10">
 
-        <div class="w-full grid grid-cols-3 gap-y-10 gap-x-4 relative z-[10]">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-4 relative z-[10]">
           <!--item1-->
           <div class="relative flex items-center z-100 ">
             <h2 class="text-deepBlueHead font-mullish font-extrabold text-4xl leading-[3.375rem]">New in the
@@ -1352,7 +1359,7 @@
         <p class="font-mullish text-center max-w-[450px] text-white mx-auto">
           Empower your business with all the right tools to accept online payments and provide the best customer experience</p>
 
-        <div class="grid grid-cols-4 gap-[2rem] mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[2rem] mt-8">
           <!--card1-->
           <div>
             <img src="https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/instant-activation-icon.svg" alt="">
@@ -1407,9 +1414,9 @@
 
     <!--join razorpay section-->
     <section class="bg-[#f5f8fe] relative pt-40 pb-12 -mt-[200px] -z-[100]">
-       <div class="relative w-11/12 max-w-[1080px] mx-auto flex flex-row">
+       <div class="relative w-11/12 max-w-[1080px] mx-auto flex flex-col md:flex-row">
         <!--left part-->
-        <div class="flex flex-col justify-center max-w-[calc(100%-500px)]">
+        <div class="flex flex-col justify-center w-full md:max-w-[calc(100%-500px)] sm:my-16">
           <h2 class="font-mullish font-bold text-2xl text-deepBlueHead">Join the 50,00,000+ businesses using Razorpay</h2>
           <div class="w-6 h-1 bg-greenLight  mb-10 my-4"></div>
           <p class="font-mullish opacity-80 ">We make it easier for you to focus on building great products while we work on simplifying your payments. Become one of us by joining thousands of our happy users and simplify the online payment experience for your customers.</p>
@@ -1417,7 +1424,7 @@
         </div>
 
         <!--right part-->
-        <div class="h-[500px] w-[500px] relative  overflow-y-hidden">
+        <div class="h-[500px] w-[500px] relative  overflow-y-hidden mx-auto">
           <div style="background: linear-gradient(180deg, #f4f8ff, #fff0);" class="absolute w-full h-[150px] top-0 z-50"></div>
           <img src="https://razor-pay-clone.vercel.app/assets/comanies-f772fc25.png" alt=""
           class="absolute h-auto object-cover companiesList"
@@ -1478,7 +1485,7 @@
       </button>
 
       <!--main content-->
-      <div class="flex flex-row max-w-[960px] items-center mx-auto my-20 space-x-[10rem]">
+      <div class="flex flex-col xl:flex-row max-w-[960px] items-center mx-auto my-20 space-x-[10rem]">
         <!--left image-->
         <img src="https://github.com/Indra-S/Razorpay-Clone/blob/master/images/testimonial.jpg?raw=true" alt=""
         height="320px"
@@ -1486,18 +1493,19 @@
         class="rounded-xl">
 
         <!--right part-->
-        <div class="max-w-[400px]">
+        <div class="max-w-[400px] flex flex-col">
         <img src="https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/quotes.svg" alt=""
         width="35px"
         height="40px"
-        class="-mb-2">
-        <p class="font-mullish text-3xl font-extralight">Readymade closed wallet solution for quick refunds</p>
-        <a href="#" class="text-grayText italic underline">Learn More</a>
-        <h3 class="font-mullish font-extrabold text-2xl">Lorem Ipsum</h3>
-        <p class="font-mullish font-medium">CEO, XYZ Engineering Company</p>
+        class="-mb-2 xl:order-1">
+        <p class="font-mullish text-3xl font-extralight xl:order-1">Readymade closed wallet solution for quick refunds</p>
+        <a href="#" class="text-grayText italic underline xl:order-1">Learn More</a>
+        <h3 class="font-mullish font-extrabold text-2xl -order-1 xl:order-5">Lorem Ipsum</h3>
+        <p class="font-mullish font-medium xl:order-1">CEO, XYZ Engineering Company</p>
         <img src="https://github.com/Indra-S/Razorpay-Clone/blob/master/images/fake-company-logo.png?raw=true" alt=""
         width="80px"
-        height="40px">
+        height="40px"
+        class="xl:order-1">
       </div>
       </div>
 
@@ -1517,7 +1525,7 @@
         <div class="h-[10px] w-[10px] bg-gray-300 rounded-full"></div>
       </div>
     </div>
-  </section>
+   </section>
  
    <!--Call To Action-->
    <section class="bg-[url(https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/CTABg.svg)] w-full h-full bg-no-repeat bg-cover relative ctaSection min-h-[510px]">
@@ -1618,7 +1626,7 @@
               
       </div>
       <!--right side image-->
-              <img src="https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/ctaImg.svg" alt="" width="240px" height="282px" class="mt-16 pt-3">
+              <img src="https://raw.githubusercontent.com/Indra-S/Razorpay-Clone/80c62df2621626715af9bf744647e27876f4d344/images/ctaImg.svg" alt="" width="240px" height="282px" class="mt-16 pt-3 hidden lg:block">
     </div>
    </section>
 
@@ -1626,7 +1634,7 @@
    <footer
     style="background: linear-gradient(to right, #eef9fe, #edf7ff)"
     class="-mt-[400px] md:-mt-[300px]"
-  >
+   >
     <div
       class="w-10/12 pt-[400px] pb-10 md:pt-[350px] md:my-0 md:w-11/12 max-w-[1080px] mx-auto flex flex-col space-y-6 lg:space-y-0 lg:space-x-4 lg:flex-row justify-between"
     >
@@ -2298,8 +2306,9 @@
 
 
 </div>
+</div>
 <script>
-  feather.replace();
+  feather.replace(); 
 </script>
   </body>
 </html>
