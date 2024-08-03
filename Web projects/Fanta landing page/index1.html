@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Coca-Cola Landing Page</title>
+    <style>
+       @import url('https://fonts.cdnfonts.com/css/product-sans');
+
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: product-sans;
+       }
+       html,body{
+        height: 100%;
+        width: 100%;
+       }
+       body::-webkit-scrollbar{
+        display: none;
+       }
+       #main{
+        width: 100%;
+        height: 100vh;
+        background-color: #fe001a;
+       }
+       nav{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 10vh;
+        padding: 0vw 10vw;
+        z-index: 99;
+       }
+
+       nav,a,i{
+        font-size: 1vw;
+        text-decoration: none;
+        color: #fff;
+       }
+       .cntr-nav{
+        display: flex;
+        gap: 3vw;
+       }
+
+       nav i{
+        font-size: 1.5vw;
+       }
+       .one{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(150deg, #fe001a, #9c0207);
+       }
+
+       .one h1{
+       font-size: 25vw;
+       font-family: product-sans;
+       font-weight: bolder;
+       color: #fff;
+       }
+
+       #fanta{
+        position: absolute;
+        width: 40%;
+        z-index: 2;
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+       #orange-cut{
+        position: absolute;
+        top: 10%;
+        left: 32%;
+        width: 15%;
+        z-index: 1;
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+       #orange{
+        position: absolute;
+        width: 20%;
+        z-index: 3;
+        top: 55%;
+        right: 30%;
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+
+       #leaf{
+        top: 10%;
+        left: 0%;
+        transform: rotate(60deg);
+        position: absolute;
+        width: 18%;
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+       #leaf2{
+        top: 70%;
+        left: 80%;
+        transform: rotate(-90deg);
+        position: absolute;
+        width: 12%;
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+       #leaf3{
+        position: absolute;
+        width: 20%;
+        top: 10%;
+        right: 0%;
+       }
+       .two{
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        background: #1a1a1a;
+       }
+
+       .lft-two, .right-two{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5vh;
+        height: 50%;
+        height: 100%;
+       }
+
+       .lft-two svg{
+        margin-top: 50vh;
+        width: 90%;
+        transform: rotateX(50deg);
+       }
+
+       .rght-two h1{
+        color: #fff;
+        font-size: 5vw;
+       }
+
+       .rght-two p{
+          font-size: 1vw;
+          color: #fff;
+          width: 80%;
+       }
+       .three{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5vw;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(150deg, #fe001a, #9c0207);
+       }
+
+       .card{
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2vh;
+        width: 25vw;
+        height: 70vh;
+        margin-top: 10vh;
+        border-radius: 20px;
+        background-color: #fff;
+       }
+       .card h1{
+        margin-top: 40vh;
+        font-size: 3vw;
+       }
+       .card button{
+        font-size: 1vw;
+        border-radius: 50px;
+        border: none;
+        color: #fff;
+        background-color: #fe001a;
+        padding: 1vw 2vw;
+       }
+
+       #cocacola{
+        top: -15%;
+        position: absolute;
+        width: 60%;
+        left: 50%;
+        transform: translate(-50%,0%);
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+       #pepsi{
+        top: -15%;
+        position: absolute;
+        width: 85%;
+        left: 50%;
+        transform: translate(-50%,0%);
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+
+       .lemon{
+        top: -30%;
+        position: absolute;
+        left: 50%;
+        width: 25vw;
+        transform: translate(-50%, 0%);
+        transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+       }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <nav>
+            <a href="#">Developergtm</a>
+            <div class="cntr-nav">
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Shop</a>
+                <a href="#">Contact</a>
+            </div>
+            <i class="ri-menu-fill"></i>
+        </nav>
+        <div class="one">
+            <h1>COCA-COLA</h1>
+            <img id="orange-cut" src="https://github.com/Devang-shah2023/Extra/blob/main/Web%20projects/Fanta%20landing%20page/orange2.png?raw=true" alt="">
+            <img id="fanta" src="https://raw.githubusercontent.com/Devang-shah2023/Extra/41a327e6d6bb0a46b7e6d8391d0418387602faa3/Web%20projects/Fanta%20landing%20page/fanta.png" alt="">
+            <img id="orange" src="https://raw.githubusercontent.com/Devang-shah2023/Extra/41a327e6d6bb0a46b7e6d8391d0418387602faa3/Web%20projects/Fanta%20landing%20page/orange.webp" alt="">
+            <img id="leaf" src="https://raw.githubusercontent.com/Devang-shah2023/Extra/41a327e6d6bb0a46b7e6d8391d0418387602faa3/Web%20projects/Fanta%20landing%20page/leaf.webp" alt="">
+            <img id="leaf2" src="https://raw.githubusercontent.com/Devang-shah2023/Extra/41a327e6d6bb0a46b7e6d8391d0418387602faa3/Web%20projects/Fanta%20landing%20page/leaf2.png" alt="">
+            <img id="leaf3" src="https://raw.githubusercontent.com/Devang-shah2023/Extra/41a327e6d6bb0a46b7e6d8391d0418387602faa3/Web%20projects/Fanta%20landing%20page/coconoutleaf.png" alt="">
+        </div>
+        <div class="two">
+            <div class="lft-two">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#990000" d="M41.5,-59.5C49.8,-51.1,49.7,-33.6,50.7,-19.2C51.7,-4.7,53.8,6.7,52.4,18.9C51.1,31.1,46.3,44.1,36.9,52.9C27.6,61.8,13.8,66.4,0.3,66.1C-13.2,65.9,-26.4,60.8,-38.1,53.3C-49.8,45.7,-60.1,35.7,-64.8,23.6C-69.4,11.6,-68.3,-2.5,-64.2,-15.3C-60.1,-28,-53,-39.4,-43.6,-47.4C-34.2,-55.5,-22.4,-60.1,-10.1,-64.1C2.1,-68.1,14.2,-71.5,27.1,-68.4C40,-65.2,53.8,-55.7,41.5,-59.5Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+            <div class="rght-two">
+                <h1>Welcome to Coca-Cola</h1>
+                <p>Discover the refreshing taste of Coca-Cola, the most popular and biggest-selling soft drink in history. Experience the joy of our classic beverage that has been bringing people together for over a century.</p>
+            </div>
+        </div>
+        <div class="three">
+            <div class="card">
+                <h1>Coca-Cola</h1>
+                <button>Buy Now</button>
+                <img id="cocacola" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Coca-Cola_bottle.png" alt="">
+            </div>
+            <div class="card">
+                <h1>Pepsi</h1>
+                <button>Buy Now</button>
+                <img id="pepsi" src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Pepsi_Can_2012.png" alt="">
+            </div>
+            <div class="card">
+                <h1>Lemonade</h1>
+                <button>Buy Now</button>
+                <img class="lemon" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Lemonade.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+        var tl = gsap.timeline({scrollTrigger:{
+    trigger: ".two",
+    start: "0% 95%",
+    end: "70% 50%",
+    scrub: true,
+    // markers: true,
+}})
+
+tl.to("#fanta",{
+    top: "120%",
+    left: "0%"
+}, 'orange')
+tl.to("#orange-cut",{
+    top:"160%",
+    left: "23%"
+}, 'orange')
+tl.to("#orange",{
+    width: "15%",
+    top:"160%",
+    right: "10%"
+}, 'orange')
+tl.to("#leaf",{
+    top:"110%",
+    rotate: "130deg",
+    left: "70%"
+}, 'orange')
+tl.to("#leaf2",{
+    top:"110%",
+    rotate: "130deg",
+    left: "0%"
+}, 'orange')
+
+
+var tl2 = gsap.timeline({scrollTrigger:{
+    trigger: ".three",
+    start: "0% 95%",
+    end: "20% 50%",
+    scrub: true,
+    // markers: true,
+}})
+
+tl2.from(".lemon1",{
+    rotate: "-90deg",
+    left: "-100%",
+    top: "110%"
+}, 'ca')
+tl2.from("#cocacola",{
+    rotate: "-90deg",
+    top: "110%",
+    left: "-100%",
+}, 'ca')
+
+tl2.from(".lemon2",{
+    rotate: "90deg",
+    left: "100%",
+    top: "110%"
+}, 'ca')
+tl2.from("#pepsi",{
+    rotate: "90deg",
+    top: "110%",
+    left: "100%",
+}, 'ca')
+
+tl2.to("#orange-cut",{
+    width:"18%",
+    left: "42%",
+    top: "204%"
+}, 'ca')
+tl2.to("#fanta",{
+    width:"35%",
+    top: "210%",
+    left: "33%",
+}, 'ca')
+    </script>
+</body>
+</html>
