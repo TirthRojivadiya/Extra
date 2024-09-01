@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day Countdown Calendar</title>
+    <style>
+        /* styles.css */
+ *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+ }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1e1e2f;  /* Dark background for the entire page */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.calendar-container {
+    background: #2d2d3b;
+    border-radius: 15px;
+    padding: 20px;
+    width: 320px; /* Slightly smaller calendar */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.glassmorphic-window {
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 20px;
+    width: 90vw;  /* Larger window for countdown */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.day {
+    width: 50px;
+    height: 50px;
+    background-color: #3c3c4e;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.day:hover {
+    background-color: #55556b;
+}
+
+.day.today {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.current-date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e63d00;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #e600c4, 0 0 20px #00e6b0;
+}
+
+.countdown {
+    font-size: 50px;  /* Larger font size for countdown */
+    color: #058aff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    text-shadow: 0 0 10px rgba(74, 32, 226, 0.985);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calendar-container">
+            <h2>30-Day Calendar</h2>
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        <div class="glassmorphic-window">
+            <div class="current-date" id="currentDate"></div>
+            <div class="countdown" id="countdown"></div>
+        </div>
+    </div>
+    <script>
+        // script.js
+
+window.onload = function() {
+    const calendarGrid = document.getElementById('calendarGrid');
+    const currentDateElement = document.getElementById('currentDate');
+    const countdownElement = document.getElementById('countdown');
+
+    const today = new Date();
+    const startDay = today.getDate();
+    const startMonth = today.getMonth();
+    const startYear = today.getFullYear();
+
+    // Display the current date
+    currentDateElement.textContent = `Today: ${today.toDateString()}`;
+
+    // Function to format date with leading zero
+    function formatDate(date) {
+        return date < 10 ? `0${date}` : date;
+    }
+
+    // Create 30 days starting from today's date
+    for (let i = 0; i < 30; i++) {
+        const currentDate = new Date(startYear, startMonth, startDay + i);
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1; // Month is 0-indexed in JS Date
+
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
+        dayElement.textContent = `${formatDate(day)}/${formatDate(month)}`;
+
+        // Highlight the current date
+        if (i === 0) {
+            dayElement.classList.add('today');
+        }
+
+        calendarGrid.appendChild(dayElement);
+    }
+
+    // Countdown timer for the 30-day countdown
+    const endDate = new Date(startYear, startMonth, startDay + 30);
+    
+    function updateCountdown() {
+        const now = new Date();
+        const timeDiff = endDate - now;
+
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        const milliseconds = Math.floor(timeDiff % 1000);
+
+        countdownElement.textContent = 
+            `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`;
+
+        if (timeDiff <= 0) {
+            clearInterval(countdownInterval);
+            countdownElement.textContent = "Countdown complete!";
+        }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 10);
+};
+
+    </script>
+</body>
+</html>
