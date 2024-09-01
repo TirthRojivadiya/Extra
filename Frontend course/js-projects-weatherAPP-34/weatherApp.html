@@ -4,13 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App project</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather Sans' rel='stylesheet'>
     <style>
+        *, *::before, *::after{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Merriweather Sans', sans-serif;
+        }
+        :root{
+            --colorDark1:#112D4E;
+            --colorDark2:#3F72AF;
+            --colorLight1:#DBE2EF;
+            --colorLight2:#F9F7F7;
+        }
+
+        .wrapper{
+            width: 100vw;
+            height: 100vh;
+            color: var(--colorLight2);
+            background-image: linear-gradient(160deg, var(--colorDark1) 0%, var(--colorDark2) 100% );
+        }
+
+        h1{
+            text-align: center;
+            text-transform: uppercase;
+            padding-top: 20px;
+        }
+
+        .tab-container{
+            display: flex;
+            justify-content: space-between;
+            max-width: 550px;
+            margin: 0 auto;
+            width: 90%;
+            margin-top: 4rem;
+        }
+        .tab{
+            cursor: pointer;
+            font-size: 0.875rem;
+            letter-spacing: 1.75px;
+            padding: 5px 8px;
+        }
+
+        .weather-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-block: 4rem;
+        }
+        .btn{
+            /* all: unset; */
+            appearance: none;
+            border: none;
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-radius: 5px;
+            background-color: var(--colorDark2);
+            cursor: pointer;
+            padding: 10px 30px;
+            margin-bottom: 10px;
+        }
+
+        .sub-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grant-location-container{
+            display: none;
+        }
+
+        .grant-location-container.active{
+            display: flex;
+        }
+
+        .grant-location-container img{
+            margin-bottom: 2rem;
+        }
+
+        .grant-location-container p:first-of-type{
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+        .grant-location-container p:last-of-type{
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.75px;
+        }
+
+        .loading-container{
+            display: none;
+        }
+
+        .loading-container.active{
+            display: flex;
+        }
+        .loading-container p{
+            text-transform: uppercase;
+        }
+
+        .user-info-container{
+            display: none;
+        }
+
+        .user-info-container.active{
+            display: flex;
+        }
+
+        .user-info-container p{
+            font-size: 1.5rem;
+            font-weight: 200;
+        }
+
+        .user-info-container img{
+            width: 90px;
+            height: 90px;
+        }
+
+        .name{
+            display: flex;
+            align-items: center;
+            gap: 0 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .name p{
+            font-size: 2rem;
+        }
+
+        .name img{
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .user-info-container p[data-temp]{
+            font-size: 2.75rem;
+            font-weight: 700;
+        }
+
+        .parameter-container{
+            display: flex;
+            gap: 10px 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top:2rem;
+        }
+
+        .parameter{
+            width: 30%;
+            max-width: 200px;
+            background-color: rgba(219,226,239,0.5);
+            border-radius: 5px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5px 0;
+           align-items: center;
+        }
+
+ 
+
 
         .tab.current-tab{
             background-color: rgba(219,226,239,0.5);
             border-radius: 4px;
         }
 
+     
         .form-container.active{
             scale: 1;
             opacity: 1;
@@ -31,7 +197,7 @@
 
         <div class="weather-container">
             <!--grant location container-->
-            <div class="grant-location-container">
+            <div class="sub-container grant-location-container">
                 <img src="https://codehelp-weather-app.netlify.app/assets/location.png" width="80" height="80" loading="lazy">
                 <p>Grant Location Access</p>
                 <p>Allow Access to get weather Information</p>
@@ -47,13 +213,13 @@
             </form>
 
             <!--loading screen container-->
-            <div class="loading-container">
+            <div class="sub-container loading-container">
                 <img src="https://codehelp-weather-app.netlify.app/assets/loading.gif" width="150" height="150">
                 <p>Loading</p>
             </div>
 
             <!--show weather info-->
-            <div class="user-info-container">
+            <div class="sub-container user-info-container">
 
                 <!--city name and flag-->
                 <div class="name">
@@ -169,7 +335,7 @@ async function fetchUserWeatherInfo(coordinates){
 
     //API CALL
     try{
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
 
         );
         const data=  await response.json();
@@ -201,7 +367,7 @@ function renderWeatherInfo(weatherInfo){
     countryIcon.src= `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`
     desc.innerText= weatherInfo?.weather?.[0]?.description;
     weathericon.src= `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText = weatherInfo?.main?.temp;
+    temp.innerText = `${weatherInfo?.main?.temp}°C`;
     windspeed.innerText = weatherInfo?.wind?.speed;
     humidity.innerText = weatherInfo?.main?.humidity;
     cloudiness.innerText= weatherInfo?.clouds?.all;
