@@ -48,10 +48,11 @@
         }
 
         .weather-container{
-            display: flex;
+            /* display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin-block: 4rem; */
             margin-block: 4rem;
         }
         .btn{
@@ -154,6 +155,7 @@
             justify-content: center;
             align-items: center;
             margin-top:2rem;
+            width: 100%;
         }
 
         .parameter{
@@ -166,6 +168,61 @@
             flex-direction: column;
             gap: 5px 0;
            align-items: center;
+        }
+
+        .parameter img{
+            width: 50px;
+            height: 50px;
+        }
+
+        .parameter p:first-of-type{
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .parameter p:last-of-type{
+            font-size: 1rem;
+            font-weight: 200;
+        }
+        .form-container{
+            display: none;
+            width: 90%;
+            max-width: 550px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            gap: 0 10px;
+            margin-bottom: 3rem;
+        }
+
+        .form-container.active{
+            display: flex;
+        }
+        .form-container input{
+            all: unset;
+            width: calc(100% - 80px);
+            height: 40px;
+            padding: 0 20px;
+            background-color: rgba(219,226,239,0.5);
+            border-radius: 10px;
+        }
+
+        .form-container input::placeholder{
+            color: rgba(255,255,255,0.7);
+        }
+        .form-container input:focus{
+            outline: 3px solid rgba(255,255,255,0.7);
+        }
+
+        .form-container .btn{
+            padding: unset;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            margin-bottom: 1px;
         }
 
  
@@ -368,9 +425,9 @@ function renderWeatherInfo(weatherInfo){
     desc.innerText= weatherInfo?.weather?.[0]?.description;
     weathericon.src= `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
     temp.innerText = `${weatherInfo?.main?.temp}°C`;
-    windspeed.innerText = weatherInfo?.wind?.speed;
-    humidity.innerText = weatherInfo?.main?.humidity;
-    cloudiness.innerText= weatherInfo?.clouds?.all;
+    windspeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText = `${weatherInfo?.main?.humidity} %`;
+    cloudiness.innerText= `${weatherInfo?.clouds?.all} %`;
 
 }
 
