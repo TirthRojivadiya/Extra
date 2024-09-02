@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevDetective</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://github.com/Devang-shah2023/Extra/blob/main/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/apple-touch-icon.png?raw=true"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://github.com/Devang-shah2023/Extra/blob/main/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/favicon-32x32.png?raw=true"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://github.com/Devang-shah2023/Extra/blob/main/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/favicon-16x16.png?raw=true"
+    />
+    <link rel="manifest" href="./images/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+  --lm-bg: #f6f8ff;
+  --lm-bg-content: #fefefe;
+  --lm-text: #4b6a9b;
+  --lm-text-alt: #2b3442;
+  --lm-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
+  --lm-shadow-inactive: 0px 16px 30px -10px rgba(0, 0, 0, 0.2);
+  --lm-icon-bg: brightness(100%);
+  /* Btn */
+  --btn: #0079ff;
+  --btn-hover: #60abff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--lm-bg);
+  color: var(--lm-text);
+  position: relative;
+  font-size: 13px;
+}
+
+.container {
+  width: 527px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  letter-spacing: 2.5px;
+  width: 70px;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  color: var(--lm-text);
+  cursor: pointer;
+}
+
+.btn p {
+  text-transform: uppercase;
+}
+
+.searchContainer {
+  position: relative;
+  background: var(--lm-bg-content);
+  display: flex;
+  height: 100%;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url(https://raw.githubusercontent.com/Devang-shah2023/Extra/e4cdb288e84a31258aa754778f28ba5ddaa8ff14/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/search-icon.svg);
+  background-repeat: no-repeat;
+  background-position-x: 24px;
+  background-position-y: center;
+  background-size: 20px;
+  border-radius: 15px;
+  box-shadow: var(--lm-shadow);
+}
+
+#input {
+  border: none;
+  outline: none;
+  width: 80%;
+  color: var(--lm-text);
+  padding-left: 50px;
+  background: none;
+}
+
+#input::placeholder {
+  color: var(--lm-text);
+  letter-spacing: -0.5px;
+  font-size: 13px;
+}
+
+.searchContainer img {
+  height: 20px;
+  width: 20px;
+  padding: 0 10px 0px 16px;
+}
+
+#noResults{
+  position: absolute;
+  text-transform: capitalize;;
+  top: -30px;
+  right: -40px;
+  background-color: red;
+  border-radius: 10px;
+  width: 180px;
+  padding: 4px 6px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  scale: 0;
+  transition: 0.5s;
+}
+
+.searchContainer #btn {
+  background: var(--btn);
+  color: #fff;
+  /* outline: none; */
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 84px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  position: relative;
+}
+
+
+.searchContainer #btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.searchContainer #btn:active {
+  scale: 0.975;
+}
+
+.profileContainer {
+  background-color: var(--lm-bg-content);
+  border-radius: 15px;
+  box-shadow: var(--lm-shadow);
+  padding: 20px;
+  position: relative;
+}
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 18px;
+}
+
+.profileHeader {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+#userImage {
+  width: 90px;
+  border-radius: 90px;
+  /* position: absolute;
+  left: 0; */
+  /* margin-left: 40px; */
+}
+
+.profileInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profileName {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  gap: 7px;
+}
+
+#name {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--lm-text-alt);
+}
+
+#username {
+  color: var(--btn);
+}
+
+#date {
+  font-size: 12px;
+  padding: 10px 0px 0px;
+}
+
+#profileBio {
+  line-height: 25px;
+  opacity: 0.75;
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--lm-bg);
+  padding: 18px 28px;
+  border-radius: 10px;
+}
+
+.profileStats {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  gap: 8px;
+}
+
+.statsTitle
+{
+  font-size: 11px;
+}
+
+.profileStats a{
+  text-decoration: none;
+  color: var(--lm-text-alt);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.profileStats a:hover{
+  text-decoration: underline;
+}
+
+.profileFooter{
+  display: flex;
+  flex-flow: row wrap;
+  color: var(--lm-text);
+}
+
+.profileInfo{
+  width: 50%;
+  display:flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomIcon{
+  width: 20px;
+  filter: var(--lm-icon-bg);
+}
+
+.profileInfo p{
+  overflow-wrap: break-word;
+}
+
+.profileInfo a{
+  color: var(--lm-text);
+  word-break: break-all;
+  text-decoration: none;
+}
+
+.profileInfo a:hover{  
+  text-decoration: underline;
+}
+    </style>
+
+    <!-- JS -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <!-- Header  -->
+        <header class="header">
+          <h1 class="title">DevDetective</h1>
+          <div class="btn" id="modeBtn">
+            <p id="modeText">dark</p>
+            <div class="iconContainer">
+              <img
+                src="https://raw.githubusercontent.com/Devang-shah2023/Extra/f86beb4e04a303d7e64d368153fb6027d154bc11/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/moon-icon.svg"
+                alt=""
+                id="modeIcon"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <!-- Search Container -->
+          <div class="searchContainer">
+            <input
+              type="text"
+              id="input"
+              placeholder="Enter a Github username..."
+              required
+              autofocus
+            />
+            
+            <div class="error">
+              <p id="noResults">no search results</p>
+            </div>
+
+            <button id="btn">Search
+            </button>
+          </div>
+
+          <!-- Profile Container -->
+          <div class="profileContainer">
+            <div class="profileContent">
+              <div class="profileHeader">
+                <img id="userImage" loading="lazy" />
+                <div class="profileInfoWrapper">
+                  <div class="profileName">
+                    <h2 id="name"></h2>
+                    <a
+                      href=""
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      id="username"
+                    ></a>
+                  </div>
+                  <p id="date"></p>
+                </div>
+              </div>
+
+              <p id="profileBio"></p>
+
+              <div class="statsContainer">
+                <div class="profileStats">
+                  <p class="statsTitle">Repos</p>
+                  <a id="repos"></a>
+                </div>
+                <div class="profileStats">
+                  <p class="statsTitle">Followers</p>
+                  <a id="followers"></a>
+                </div>
+                <div class="profileStats">
+                  <p class="statsTitle">Following</p>
+                  <a id="following"></a>
+                </div>
+              </div>
+
+              <div class="profileFooter">
+                <div class="profileInfo">
+                  <div class="bottomIcon">
+                    <img
+                      src="https://raw.githubusercontent.com/Devang-shah2023/Extra/f86beb4e04a303d7e64d368153fb6027d154bc11/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/location-icon.svg"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <p id="location"></p>
+                </div>
+
+                <div class="profileInfo">
+                  <div class="bottomIcon">
+                    <img
+                      src="https://raw.githubusercontent.com/Devang-shah2023/Extra/f86beb4e04a303d7e64d368153fb6027d154bc11/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/website-icon.svg"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <a id="website"></a>
+                </div>
+                <div class="profileInfo">
+                  <div class="bottomIcon">
+                    <img
+                      src="https://raw.githubusercontent.com/Devang-shah2023/Extra/f86beb4e04a303d7e64d368153fb6027d154bc11/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/twitter-icon.svg"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <a id="twitter"></a>
+                </div>
+                <div class="profileInfo">
+                  <div class="bottomIcon">
+                    <img
+                      src="https://raw.githubusercontent.com/Devang-shah2023/Extra/f86beb4e04a303d7e64d368153fb6027d154bc11/Frontend%20course/js-projects-weatherAPP-34/DevDetective/images/company-icon.svg"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <p id="company"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script>
+      const url = "https://api.github.com/users/";
+const get = (element) => document.getElementById(`${element}`);
+
+
+const input = get("input");
+const btn = get("btn");
+
+
+btn.addEventListener('click', () => {
+    if (input.value !== "") {
+        getUserData(url + input.value);
+    }
+})
+
+input.addEventListener('keydown', (e) => {
+    // console.log(e.key);
+    if (e.key === 'Enter') {
+        if (input.value !== "") {
+            getUserData(url + input.value);
+        }
+    }
+}, false);
+
+async function getUserData(gitUrl) {
+    const response = await fetch(gitUrl);
+    const data = await response.json();
+    if (!data) {
+        throw data;
+    }
+    updateProfile(data);
+    // return data;
+}
+
+let dateSegment;
+const noResults = get("noResults");
+
+function updateProfile(data) {
+    noResults.style.scale = 0;
+    if (data.message !== "Not Found") {
+        function checkNull(apiItem, domItem) {
+            if (apiItem === "" || apiItem === null) {
+                domItem.style.opacity = 0.5;
+                domItem.previousElementSibling.style.opacity = 0.5;
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        const userImage = get("userImage");
+        const name = get("name");
+        const username = get("username");
+        const date = get("date");
+        const repos = get("repos");
+        const followers = get("followers");
+        const following = get("following");
+        const profileBio = get("profileBio");
+        const location = get("location");
+        const website = get("website");
+        const twitter = get("twitter");
+        const company = get("company");
+        const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+        // console.log(name);
+        userImage.src = `${data.avatar_url}`;
+        name.innerText = data?.name;
+        username.innerText = `@${data?.login}`;
+        username.href = data?.html_url;
+        dateSegment = data?.created_at.split("T").shift().split("-");
+        date.innerText = `Joined ${dateSegment[2]} ${month[dateSegment[1] - 1]} ${dateSegment[0]}`;
+
+        profileBio.innerText = (data?.bio === null) ? "This Profile has no Bio" : data?.bio;;
+
+        repos.innerText = data?.public_repos;
+        repos.href = data?.repos_url;
+        followers.innerText = data?.followers;
+        followers.href = data?.followers_url;
+        following.innerText = data?.following;
+        following.href = data?.following_url;
+
+        location.innerText = checkNull(data?.location, location) ? data?.location : "Rajkot, Gujarat";
+
+        website.innerText = checkNull(data?.blog, website) ? data?.blog : "Not Available";
+
+        website.href = checkNull(data?.blog, website) ? data?.blog : "#";
+
+        twitter.innerText = checkNull(data?.twitter_username, twitter) ? data?.twitter_username : "ShahDevang12320";
+
+        twitter.href = checkNull(data?.twitter_username, twitter) ? `https://twitter.com/${data?.twitter_username}` : "https://x.com/ShahDevang12320?t=vXMbX9ip4tKXD8o-iSf8rg&s=08";
+
+        company.innerText = checkNull(data?.company, company) ? data?.company : "Still graduating";
+    }
+    else {
+        noResults.style.scale = 1;
+        setTimeout(() => {
+            noResults.style.scale = 0;
+        }, 2500);
+    }
+}
+
+
+// Dark And Light Mode 
+const modeBtn = get("modeBtn");
+const modeText = get("modeText");
+const modeIcon = get("modeIcon");
+let darkMode = false;
+const root = document.documentElement.style;
+
+modeBtn.addEventListener("click", () => {
+
+    if (darkMode === false) {
+        enableDarkMode();
+    }
+    else {
+        enableLightMode();
+    }
+});
+
+function enableDarkMode() {
+    root.setProperty("--lm-bg", "#141D2F");
+    root.setProperty("--lm-bg-content", "#1E2A47");
+    root.setProperty("--lm-text", "white");
+    root.setProperty("--lm-text-alt", "white");
+    root.setProperty("--lm-shadow-xl", "rgba(70,88,109,0.15)");
+    modeText.innerText = "LIGHT";
+    modeIcon.src = "./Images/sun-icon.svg";
+    root.setProperty("--lm-icon-bg", "brightness(1000%)");
+    darkMode = true;
+    localStorage.setItem("dark-mode", true);
+
+}
+
+function enableLightMode() {
+    root.setProperty("--lm-bg", "#F6F8FF");
+    root.setProperty("--lm-bg-content", "#FEFEFE");
+    root.setProperty("--lm-text", "#4B6A9B");
+    root.setProperty("--lm-text-alt", "#2B3442");
+    root.setProperty("--lm-shadow-xl", "rgba(70, 88, 109, 0.25)");
+    modeText.innerText = "DARK";
+    modeIcon.src = "./Images/moon-icon.svg";
+    root.setProperty("--lm-icon-bg", "brightness(100%)");
+    darkMode = false;
+    localStorage.setItem("dark-mode", false);
+}
+
+
+// This code checks if the user's device has a preference for dark mode
+const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+// Check if there is a value for "dark-mode" in the user's localStorage
+if (localStorage.getItem("dark-mode") === null) {
+    // If there is no value for "dark-mode" in localStorage, check the device preference
+    if (prefersDarkMode) {
+        // If the device preference is for dark mode, apply dark mode properties
+        enableDarkMode();
+    } else {
+        // If the device preference is not for dark mode, apply light mode properties
+        enableLightMode();
+    }
+} else {
+    // If there is a value for "dark-mode" in localStorage, use that value instead of device preference
+    if (localStorage.getItem("dark-mode") === "true") {
+        // If the value is "true", apply dark mode properties
+        enableDarkMode();
+    } else {
+        // If the value is not "true", apply light mode properties
+        enableLightMode();
+    }
+}
+
+getUserData(url + "Devang-shah2023");
+
+    </script>
+  </body>
+</html>
